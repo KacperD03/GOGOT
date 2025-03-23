@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dals2k57xonqn"]
+
+[ext_resource type="Script" path="res://gameplay.gd" id="1_kxxm0"]
+[ext_resource type="Script" path="res://player.gd" id="2_8yeur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y781i"]
+radius = 27.1662
+
+[node name="gameplay" type="Node2D"]
+script = ExtResource("1_kxxm0")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("2_8yeur")
+
+[node name="ludzik" type="Area2D" parent="CharacterBody2D" groups=["przeszkody", "punkty"]]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/ludzik"]
+shape = SubResource("CircleShape2D_y781i")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.0615234, 0.0615234)
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="DeadText" type="Label" parent="."]
+visible = false
+offset_left = -1.0
+offset_top = 345.0
+offset_right = 401.0
+offset_bottom = 489.0
+text = "Nie żyjesz
+Restart = R"
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="CharacterBody2D/ludzik" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout2"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout3"]

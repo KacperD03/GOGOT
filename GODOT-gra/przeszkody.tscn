@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1kdwbsf7hhno"]
+
+[ext_resource type="Script" path="res://przeszkody.gd" id="1_4ny6m"]
+[ext_resource type="Texture2D" uid="uid://rte3pl7wu6tc" path="res://Tekstury/sównica.PNG" id="2_mqqsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dpaaw"]
+size = Vector2(142.182, 103.152)
+
+[node name="Przeszkody" type="Node2D" groups=["przeszkody"]]
+script = ExtResource("1_4ny6m")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0.999999)
+scale = Vector2(0.717391, 0.717391)
+shape = SubResource("RectangleShape2D_dpaaw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(1, -1.90735e-06)
+scale = Vector2(0.509317, 0.509317)
+texture = ExtResource("2_mqqsi")
